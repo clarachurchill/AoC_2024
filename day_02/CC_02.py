@@ -1,26 +1,18 @@
-test_input = [[7, 6, 4, 2, 1],
-              [1, 2, 7, 8, 9],
-              [9, 7, 6, 2, 1],
-              [1, 3, 2, 4, 5],
-              [8, 6, 4, 4, 1],
-              [1, 3, 6, 7, 9]]
-
 with open('day_02/input.txt') as f:
     lines = f.readlines()
-    numbers = [x.strip().split(' ') for x in lines]
+numbers = [x.strip().split(' ') for x in lines]
 
 def test_line(line):
-    line = [int(x) for x in line]
-    for i in range(len(line)):
+    for i in range(1, len(line)):
         if i > 1:
             curr_diff = line[i] - line[i - 1]
             old_diff = line[i - 1] - line[i - 2]
             if curr_diff * old_diff < 0:
                 return False
-        if i > 0:
-            if abs(line[i] - line[i - 1]) not in [1, 2, 3]:
-                return False
+        if abs(line[i] - line[i - 1]) not in [1, 2, 3]:
+            return False
     return True
+
 sol_one = 0
 sol_two = 0
 for line in numbers:
