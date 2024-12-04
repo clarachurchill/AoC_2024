@@ -24,9 +24,9 @@ for y in range(length):
             count_x = 0
             for dir in x_paths:
                 word = [text[y + dir[0] * mult][x + dir[1] * mult] for mult in list(range(-1, 2)) if y + dir[0] * mult >= 0 and y + dir[0] * mult < length and x + dir[1] * mult >= 0 and x + dir[1] * mult < width]
-                if ''.join(word) == 'MAS' or ''.join(word) == 'SAM':
+                if ''.join(word) == 'MAS':
                     count_x += 1
-            if count_x == 4:
+            if count_x == 2:
                 xmas_x += 1
                     
 print(xmas_joy)
