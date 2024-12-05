@@ -31,6 +31,29 @@ for print_order in order_lists:
 
 print(sum([print_order[(len(print_order) - 1) // 2] for print_order in good_lists]))
 
+#what if we randomly sort our list until it's in the correct order - DON'T DO THIS
+import random
+fixed_lists = []
+for print_order in bad_lists:
+    passed = False
+    tried_list = []
+    while not passed:
+        failed = False
+        for item in print_order:
+            if any([print_order.index(item) > print_order.index(x) for x in map_dict[item] if x in print_order]):
+                failed = True
+                tried_list.append(str(print_order))
+                while str(print_order) in tried_list:
+                    random.shuffle(print_order)
+
+        if not failed:
+            passed = True
+            print(print_order)
+            fixed_lists.append(print_order)  
+        
+print(sum([print_order[(len(print_order) - 1) // 2] for print_order in fixed_lists]))
+
+#now the good way that runs in less than 100,000 years
 fixed_lists = []
 for print_order in bad_lists:
     new_order = []
